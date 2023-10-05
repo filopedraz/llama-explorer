@@ -1,0 +1,5 @@
+go-skynet/LocalAI
+bigscience-workshop/petals
+ggerganov/llama.cpp
+nomic-ai/gpt4all
+langchain-ai/langchain
