@@ -5,6 +5,7 @@ import logging
 import pandas as pd
 
 from dotenv import load_dotenv
+from tenacity import retry, stop_after_attempt, wait_fixed
 
 load_dotenv()
 
@@ -19,6 +20,7 @@ logging.basicConfig(
 # hireable, bio, twitter_username, public_repos, public_gists, followers, 
 # following, created_at, updated_at, html_url etc) | Repositories Starred (list of the repositories in our list).
 
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(60))
 def fetch_user_info(username):
     token = os.getenv("GITHUB_TOKEN")
     
@@ -37,7 +39,7 @@ def fetch_user_info(username):
     
     return response.json()
 
-
+@retry(stop=stop_after_attempt(3), wait=wait_fixed(60))
 def fetch_stargazers(repository):
     token = os.getenv("GITHUB_TOKEN")
     
@@ -81,18 +83,11 @@ logging.info(f"Loaded df with {len(df)} records")
 
 while True:
     for repo in repositories:
-        try:
-            users = fetch_stargazers(repo)
-
-            for user in users:
-                if not user_record_exists(df, user, repo):
-                    user_info = fetch_user_info(user)
-                    user_info["repository"] = repo
-                    df = pd.concat([df, pd.DataFrame([user_info])], ignore_index=True)
-                    df.to_csv("./data/data.csv", index=False)
-
-            logging.info(f"Processed {repo}")
-        except Exception as e:
-            logging.error(e)
-            time.sleep(60*10)
-        
+        users = fetch_stargazers(repo)
+        for user in users:
+            if not user_record_exists(df, user, repo):
+                user_info = fetch_user_info(user)
+                user_info["repository"] = repo
+                df = pd.concat([df, pd.DataFrame([user_info])], ignore_index=True)
+                df.to_csv("./data/data.csv", index=False)
+        logging.info(f"Processed {repo}")
