@@ -83,11 +83,17 @@ logging.info(f"Loaded df with {len(df)} records")
 
 while True:
     for repo in repositories:
-        users = fetch_stargazers(repo)
-        for user in users:
-            if not user_record_exists(df, user, repo):
-                user_info = fetch_user_info(user)
-                user_info["repository"] = repo
-                df = pd.concat([df, pd.DataFrame([user_info])], ignore_index=True)
-                df.to_csv("./data/data.csv", index=False)
-        logging.info(f"Processed {repo}")
+        try:
+            users = fetch_stargazers(repo)
+            for user in users:
+                if not user_record_exists(df, user, repo):
+                    try:
+                        user_info = fetch_user_info(user)
+                        user_info["repository"] = repo
+                        df = pd.concat([df, pd.DataFrame([user_info])], ignore_index=True)
+                        df.to_csv("./data/data.csv", index=False)
+                    except Exception as e:
+                        logging.error(f"Failed to process {user} with error {e}")
+            logging.info(f"Processed {repo}")
+        except Exception as e:
+            logging.error(e)
