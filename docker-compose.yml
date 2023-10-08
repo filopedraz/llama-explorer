@@ -8,3 +8,13 @@ services:
       - ./data/:/usr/src/app/data/
     env_file:
       - .env
+    command: python github.py
+
+  reddit:
+    container_name: reddit
+    build: .
+    volumes:
+      - ./data/:/usr/src/app/data/
+    env_file:
+      - .env
+    command: python reddit.py
