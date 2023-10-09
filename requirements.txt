@@ -3,3 +3,5 @@ python-dotenv
 pandas
 tenacity
 tweepy
+peewee
+psycopg2
