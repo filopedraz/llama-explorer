@@ -1,6 +1,15 @@
 version: "3"
 
 services:
+  app:
+    container_name: app
+    build: .
+    volumes:
+      - ./data/:/usr/src/app/data/
+    env_file:
+      - .env
+    command: python main.py
+  
   cron:
     container_name: cron
     build: .
@@ -8,13 +17,5 @@ services:
       - ./data/:/usr/src/app/data/
     env_file:
       - .env
-    command: python github.py
+    command: python main.py
 
-  reddit:
-    container_name: reddit
-    build: .
-    volumes:
-      - ./data/:/usr/src/app/data/
-    env_file:
-      - .env
-    command: python reddit.py

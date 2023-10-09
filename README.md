@@ -1,22 +1,25 @@
-# 🦙 LLM Explorer
+# 🦙 Llama Explorer
 
 Keep track of all the Open Source AI projects, repositories, and discussions around the topics you are interested in with an intuitive UI.
 
-Try the demo instance [here](https://llm-explorer.joandko.io)
+Try the demo instance [here](https://llama-explorer.joandko.io)
 
 ## 🛠️ Features
 
-## 🚀 Roadmap
+- Fetch all the GH information in order to display a set of metrics.
 
-- [ ] Living report (LLM explorer) / llama explorer
-  - [ ] Most starred repositories with a certain tags
-  - [ ] Most active contributors 
-  - [ ] Most used models?
-  - [ ] Articles of the day? / news?
-  - [ ] Best open source llms fetch data from leadersnoad?
-  - [ ] Sentiment ? Like the fear and greed index
+## 📊 Metrics MVP
 
----
+- Most starred repositories
+- Most active contributors
+- Best contributor of the day
+
+## 🚀 Roadmap & Ideas
+
+- [ ] Most used models
+- [ ] Fear and greed index
+- [ ] Best open source LLMs (https://github.com/open-compass/OpenCompass/)
+- [ ] Best open source Diffusers
 
 – [ ] Add DB (postgres) and ORM (sqlalchemy) and refactor the code to use it
 - Fetch all the new developers from Github interested in certain open source projects. Get insights about the developers, their interests, and their contributions in an intuitive UI.
@@ -43,3 +46,12 @@ Try the demo instance [here](https://llm-explorer.joandko.io)
 - [ ] Get summary of a Paper
 - [ ] Embed the book and all the links
 - [ ] Fine-tune gpt3.5?
+
+- [ ] Living report (LLM explorer) / llama explorer
+  
+  - [ ] Most used models?
+
+  - [ ] Articles of the day? / news?
+  - [ ] Best open source llms fetch data from leaderboard?
+  - [ ] Sentiment ? Like the fear and greed index
+  - [ ] TLDR of everything
