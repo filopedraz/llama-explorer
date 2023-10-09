@@ -19,6 +19,11 @@ API_SECRET_KEY = os.getenv("TWITTER_API_SECRET_KEY")
 ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 
+# Twitter Metrics
+# 0. List of all the tweets of yesterday with title and some stats (likes, retweets, replies, etc).
+# 1. Generic Yesterday summary of content
+# 2. Most mentioned tools, languages, frameworks, etc.
+
 
 def initialize_api():
     auth = tweepy.OAuthHandler(API_KEY, API_SECRET_KEY)

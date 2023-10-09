@@ -1,8 +1,8 @@
 # 🦙 Llama Explorer
 
-Keep track of all the Open Source AI projects, repositories, and discussions around the topics you are interested in with an intuitive UI.
+Keep track of all the Open Source AI projects, repositories, and contributors in an intuitive UI.
 
-Try the demo instance [here](https://llama-explorer.joandko.io)
+Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 
 ## 🛠️ Features
 

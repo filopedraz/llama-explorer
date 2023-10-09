@@ -15,6 +15,14 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
+# Reddit Metrics
+# List of all the posts mentioning the topics you are interested in with the links and summaries.
+
+# 0. List of all the posts of yesterday with title and some stats (upvotes, comments, awards, etc).
+# 1. Generic Yesterday summary of content
+# 2. Most mentioned tools, languages, frameworks, etc.
+# 3. Most mentioned companies
+
 
 def login():
     response = requests.post("https://www.reddit.com/api/v1/access_token",
