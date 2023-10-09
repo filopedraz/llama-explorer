@@ -1,5 +1,8 @@
 version: "3"
 
+volumes:
+  db_data: {}
+
 services:
   app:
     container_name: app
@@ -10,12 +13,38 @@ services:
       - .env
     command: python main.py
   
-  cron:
-    container_name: cron
+  repos:
+    container_name: repos
     build: .
     volumes:
       - ./data/:/usr/src/app/data/
     env_file:
       - .env
-    command: python main.py
+    command: python cron.py --task repos
+
+  users:
+    container_name: users
+    build: .
+    volumes:
+      - ./data/:/usr/src/app/data/
+    env_file:
+      - .env
+    command: python cron.py --task users
+
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data:Z
+    env_file:
+      - .env
+    shm_size: 1gb
+    command: postgres -N 1500 -c work_mem=16MB -c max_wal_size=2GB
+    restart: always
+    logging:
+      options:
+        max-file: "10"
+        max-size: 10m
 
