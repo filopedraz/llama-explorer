@@ -42,7 +42,7 @@ def fetch_comments(post_id, parent_id=None):
     return comments
 
 
-def if_not_post_record_exists(df, post_id):
+def post_record_exists(df, post_id):
     return len(df[df["id"] == post_id]) == 0
 
 
@@ -79,31 +79,32 @@ if __name__ == "__main__":
                 break
 
             for post in posts:
-                post_data = post["data"]
-                created_utc = post_data["created_utc"]
+                if not post_record_exists(df, post["data"]["id"]):
+                    post_data = post["data"]
+                    created_utc = post_data["created_utc"]
 
-                if created_utc < start_time:
-                    break
+                    if created_utc < start_time:
+                        break
 
-                comments = fetch_comments(post_data["id"])
-                comments = "\n===\n".join(comments)
-                post_info = {
-                    "id": post_data["id"],
-                    "title": str(post_data["title"]),
-                    "created_utc": post_data["created_utc"],
-                    "author": str(post_data["author"]),
-                    "comments": str(comments),
-                    "selftext_html": str(post_data["selftext_html"]),
-                    "url": post_data["url"],
-                    "selftext": str(post_data["selftext"]),
-                    "num_comments": post_data["num_comments"],
-                    "likes": post_data["likes"],
-                    "score": post_data["score"],
-                    "subreddit": subreddit
-                }
-                df = pd.concat([df, pd.DataFrame([post_info])],
-                               ignore_index=True)
-                df.to_csv("./data/reddit.csv", index=False)
+                    comments = fetch_comments(post_data["id"])
+                    comments = "\n===\n".join(comments)
+                    post_info = {
+                        "id": post_data["id"],
+                        "title": str(post_data["title"]),
+                        "created_utc": post_data["created_utc"],
+                        "author": str(post_data["author"]),
+                        "comments": str(comments),
+                        "selftext_html": str(post_data["selftext_html"]),
+                        "url": post_data["url"],
+                        "selftext": str(post_data["selftext"]),
+                        "num_comments": post_data["num_comments"],
+                        "likes": post_data["likes"],
+                        "score": post_data["score"],
+                        "subreddit": subreddit
+                    }
+                    df = pd.concat([df, pd.DataFrame([post_info])],
+                                   ignore_index=True)
+                    df.to_csv("./data/reddit.csv", index=False)
 
             logging.info(f"Saved {len(posts)} posts")
 

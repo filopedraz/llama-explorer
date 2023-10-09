@@ -1,14 +1,30 @@
-# 🦙 Open Source AI Bot
+# 🦙 LLM Explorer
 
-Keep track of all the Open Source AI projects, repositories, and discussions around the topics you are interested in.
+Keep track of all the Open Source AI projects, repositories, and discussions around the topics you are interested in with an intuitive UI.
+
+Try the demo instance [here](https://llm-explorer.joandko.io)
 
 ## 🛠️ Features
 
-- Fetch all the new developers from Github interested in certain open source projects. Get insights about the developers, their interests, and their contributions in an intuitive UI.
-- Fetch all the posts and discussions on Reddit and Twitter about the projects you are interested in. Get insights about the discussions, the topics, and the sentiment of the discussions in an intuitive UI.
-
 ## 🚀 Roadmap
 
+- [ ] Living report (LLM explorer) / llama explorer
+  - [ ] Most starred repositories with a certain tags
+  - [ ] Most active contributors 
+  - [ ] Most used models?
+  - [ ] Articles of the day? / news?
+  - [ ] Best open source llms fetch data from leadersnoad?
+  - [ ] Sentiment ? Like the fear and greed index
+
+---
+
+– [ ] Add DB (postgres) and ORM (sqlalchemy) and refactor the code to use it
+- Fetch all the new developers from Github interested in certain open source projects. Get insights about the developers, their interests, and their contributions in an intuitive UI.
+- Fetch all the posts and discussions on Reddit and Twitter about the projects you are interested in. Get insights about the discussions, the topics, and the sentiment of the discussions in an intuitive UI.
+- [ ] Think about Multimodal too
+- [ ] Fetch from TLDR AI all the new links and projects
+  - [ ] Get all the Last Year Emails
+- [ ] Fetch HF Content and Model Cards?
 - [ ] Fetch all the papers and do summaries on them.
 - [ ] Fetch all the new blog posts and do summaries on them.
 - [ ] Connect the bot to slack in order to summarize links pasted in the channel.
@@ -20,3 +36,10 @@ Keep track of all the Open Source AI projects, repositories, and discussions aro
 - [ ] Create a chatbot that can answer questions about the projects
 - [ ] Alert when on reddit they speak about privacy, censorsehip, etc
 - [ ] Build a simple search on top of the data
+- [ ] Index the entire codebases of the projects in order to be able to ask questions about them (llama.cpp, GGML etc)
+- [ ] Open Source AI LLM Monitor 
+- [ ] Get summary of a Reddit post
+- [ ] Get summary of a tweet thread
+- [ ] Get summary of a Paper
+- [ ] Embed the book and all the links
+- [ ] Fine-tune gpt3.5?
