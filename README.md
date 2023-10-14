@@ -19,6 +19,7 @@ Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 ## 🚀 Roadmap & Ideas
 
 - [ ] Most used models
+- [ ] Hot topics now, last week, history (based on issues and PRs, features, e.g., pytorch, tensorflow, etc.)
 - [ ] Fear and greed index
 - [ ] Best open source LLMs (https://github.com/open-compass/OpenCompass/)
 - [ ] Best open source Diffusers
@@ -26,3 +27,8 @@ Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 - [ ] Number of contributors per country
 - [ ] Experience of the contributors (>100 followers?)
 - [ ] Generate an image with stable diffusion for the best contributor of the day
+- [ ] TLDR AI a newsletter built by AI developers for AI developers with the help of AI
+  - [ ] Paste a slack webhoook here and you will get notified on slack on a daily basis
+- [ ] Check domains available (LLM.explorer)
+- [ ] Big bench, Agent bench
+- [ ] https://github.com/stanford-crfm/ecosystem-graphs
