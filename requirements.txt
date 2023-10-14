@@ -4,4 +4,4 @@ pandas
 tenacity
 tweepy
 peewee
-psycopg2
+psycopg2-binary
