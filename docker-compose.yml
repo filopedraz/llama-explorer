@@ -13,23 +13,23 @@ services:
       - .env
     command: python main.py
   
-  repos:
-    container_name: repos
-    build: .
-    volumes:
-      - ./data/:/usr/src/app/data/
-    env_file:
-      - .env
-    command: python cron.py --task repos
+  # repos:
+  #   container_name: repos
+  #   build: .
+  #   volumes:
+  #     - ./data/:/usr/src/app/data/
+  #   env_file:
+  #     - .env
+  #   command: python cron.py --task repos
 
-  users:
-    container_name: users
-    build: .
-    volumes:
-      - ./data/:/usr/src/app/data/
-    env_file:
-      - .env
-    command: python cron.py --task users
+  # users:
+  #   container_name: users
+  #   build: .
+  #   volumes:
+  #     - ./data/:/usr/src/app/data/
+  #   env_file:
+  #     - .env
+  #   command: python cron.py --task users
 
   postgres:
     image: postgres:14

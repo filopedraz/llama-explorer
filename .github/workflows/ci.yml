@@ -18,14 +18,13 @@ jobs:
         PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         HOST: ${{ secrets.HOST }}
         USER: ${{ secrets.USER }}
-        PORT: ${{ secrets.PORT }}
         TARGET_DIR: ${{ secrets.TARGET_DIR }}
 
       run: |
         echo "$PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
 
-        ssh -o StrictHostKeyChecking=no -i private_key.pem -p $PORT $USER@$HOST <<-EOF
+        ssh -o StrictHostKeyChecking=no -i private_key.pem $USER@$HOST <<-EOF
           cd $TARGET_DIR
           git pull
           docker-compose up --build -d
