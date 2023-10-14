@@ -15,9 +15,9 @@ jobs:
 
     - name: Execute deployment commands
       env:
-        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         HOST: ${{ secrets.HOST }}
         USER: ${{ secrets.USER }}
+        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         TARGET_DIR: ${{ secrets.TARGET_DIR }}
 
       run: |
@@ -28,5 +28,6 @@ jobs:
           cd $TARGET_DIR
           git pull
           docker-compose up --build -d
+          docker-compose run --rm backend python manage.py migrate
         EOF
         rm -f private_key.pem

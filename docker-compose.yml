@@ -4,32 +4,30 @@ volumes:
   db_data: {}
 
 services:
-  app:
-    container_name: app
+  frontend:
+    container_name: frontend
     build: .
-    volumes:
-      - ./data/:/usr/src/app/data/
     env_file:
       - .env
-    command: python main.py
-  
-  # repos:
-  #   container_name: repos
-  #   build: .
-  #   volumes:
-  #     - ./data/:/usr/src/app/data/
-  #   env_file:
-  #     - .env
-  #   command: python cron.py --task repos
+    command: streamlit run Home.py
+    ports:
+      - "8501:8501"
 
-  # users:
-  #   container_name: users
-  #   build: .
-  #   volumes:
-  #     - ./data/:/usr/src/app/data/
-  #   env_file:
-  #     - .env
-  #   command: python cron.py --task users
+  backend:
+    container_name: backend
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+
+  repos:
+    container_name: repos
+    build: .
+    env_file:
+      - .env
+    command: python manage.py repositories
 
   postgres:
     image: postgres:14
@@ -47,4 +45,3 @@ services:
       options:
         max-file: "10"
         max-size: 10m
-
