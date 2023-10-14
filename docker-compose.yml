@@ -22,12 +22,46 @@ services:
       - "8000:8000"
     command: python manage.py runserver 0.0.0.0:8000
 
-  repos:
-    container_name: repos
+  redis:
+    image: redis:6
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    logging:
+      options:
+        max-file: "10"
+        max-size: 10m
+
+  celeryworker:
     build: .
+    depends_on:
+      - redis
+      - postgres
     env_file:
       - .env
-    command: python manage.py repositories
+    command: celery -A backend worker -l info
+    deploy:
+      replicas: 2
+
+  celerybeat:
+    build: .
+    container_name: celerybeat
+    depends_on:
+      - redis
+      - postgres
+    env_file:
+      - .env
+    command: celery -A backend beat -l info
+
+  flower:
+    build: .
+    container_name: flower
+    env_file:
+      - .env
+    ports:
+      - "5555:5555"
+    command: celery -A backend flower --basic_auth=${FLOWER_USERNAME}:${FLOWER_PASSWORD}
 
   postgres:
     image: postgres:14

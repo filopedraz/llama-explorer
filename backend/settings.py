@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-&6t&%hhp@zuz$t)b9s*0&r&__f@1dws$yijpvnkzdtw@*4)!k=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["157.230.98.160"]
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_celery_beat",
     "sources",
 ]
 
@@ -142,3 +143,8 @@ REDDIT_USERNAME = os.getenv("REDDIT_USERNAME")
 REDDIT_PASSWORD = os.getenv("REDDIT_PASSWORD")
 REDDIT_CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
 REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
+
+# Celery
+# -----------------------------------------------
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
