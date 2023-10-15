@@ -4,6 +4,10 @@ SCREENSHOT / COVER
 
 Keep track of all the Open Source AI projects, repositories, and contributors in an intuitive UI.
 
+## 🖥️ Demo
+
+IMAGE_WITH_THE_MAP
+
 Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 
 ## 🚀 Roadmap
