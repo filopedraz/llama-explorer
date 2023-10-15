@@ -2,6 +2,7 @@ version: "3"
 
 volumes:
   db_data: {}
+  redis_data: {}
 
 services:
   frontend:
@@ -28,6 +29,8 @@ services:
     restart: always
     ports:
       - "6379:6379"
+    volumes:
+      - redis_data:/data
     logging:
       options:
         max-file: "10"

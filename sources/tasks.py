@@ -15,8 +15,8 @@ def fetch_and_save_all_repositories_task(self):
 
 
 @shared_task(bind=True, name="fetch_and_save_commits_task")
-def fetch_and_save_commits_task(self):
-    services.fetch_and_save_commits()
+def fetch_and_save_commits_task(self, repo):
+    services.fetch_and_save_commits(repo)
 
 
 @shared_task(bind=True, name="fetch_and_save_all_commits_task")
