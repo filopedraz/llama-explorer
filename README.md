@@ -1,6 +1,6 @@
 # 🦙 Llama Explorer
 
-SCREENSHOT / COVER
+![cover](https://github.com/filopedraz/llama-explorer/assets/29598954/b979aef1-65bc-4019-8d09-bf4c236ce251)
 
 Keep track of all the Open Source AI projects, repositories, and contributors in an intuitive UI.
 
