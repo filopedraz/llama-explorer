@@ -17,11 +17,13 @@ Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 - [ ] Hot Topics and Trends. A list of the most popular topics and trends in the Open Source AI community. Check on what the main projects are working on based on Issues and PRs.
 - [ ] Hot Tools. A list of the most mentioned tools across Reddit and Twitter.
 
-## 🛠️ Self Host
-
-Simply use `docker-compose`
+## 🛠️ Self Host with docker-compose
 
 ```bash
+# clone the repo
+git clone https://github.com/filopedraz/llama-explorer
+
+# run the docker-compose
 docker-compose up --build -d
 ```
 
