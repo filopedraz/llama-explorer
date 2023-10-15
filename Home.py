@@ -66,8 +66,22 @@ df_contributors = pd.DataFrame(
 st.markdown("### 🤖 Most Active Contributors")
 st.dataframe(df_contributors, use_container_width=True, hide_index=True)
 
+
+df = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4], columns=["lat", "lon"]
+)
+
+st.map(df)
+
+st.divider()
+
+chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+
+st.markdown("### 🤖 Most Used Programming Languages")
+st.bar_chart(chart_data)
+
 st.markdown(
     """
-> Data is fetched everyday at 00:00 UTC. If you don't see a repository, you can create PR to add it to the list.
-"""
+> Data is fetched everyday at 00:00 UTC. If you don't see a repository, you can create PR to add it to the list. Check how to do that in the settings page.
+"""  # noqa E501
 )
