@@ -2,15 +2,20 @@ import os
 import sys
 
 import django
-import numpy as np
-import pandas as pd
 import streamlit as st
 from PIL import Image
 
-sys.path.append(".")
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
-django.setup()
+def init_django():
+    sys.path.append(".")
+
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+    django.setup()
+
+
+init_django()
+
+import utils  # noqa
 
 st.set_page_config(layout="wide")
 
@@ -26,10 +31,12 @@ st.image(image, caption="Llama Explorer on Mars")
 
 st.divider()
 
+metric1, metric2, metric3 = utils.fetch_basic_metrics()
+
 col1, col2, col3 = st.columns(3)
-col1.metric("Number of Repositories Tracked", "120", "3")
-col2.metric("Most used Programming Language", "Python")
-col3.metric("Country with the Most contributors", "Italy")
+col1.metric("Number of Repositories Tracked", metric1)
+col2.metric("Most used Programming Language", metric2)
+col3.metric("Country with the Most contributors", metric3)
 
 st.divider()
 
@@ -39,46 +46,46 @@ st.markdown(
 """
 )
 
+metric1, metric2, metric3 = utils.fetch_best_contributor_of_the_day()
+
 col1, col2, col3 = st.columns(3)
 
-col1.metric("🤖 Username", "filopedraz")
-col2.metric("💻 Commits", "120", "3")
+col1.metric("🤖 Username", metric1)
+col2.metric("💻 Commits", metric2)
 col3.image(
-    "https://avatars.githubusercontent.com/u/29598954",
-    caption="filopedraz",
+    metric3,
+    caption=metric1,
     use_column_width=True,
 )
 
 st.divider()
 
-df_repos = pd.DataFrame(
-    np.random.randn(50, 4), columns=["Repository", "Stars", "Forks", "Contributors"]
-)
+df_repos = utils.fetch_most_starred_repositories()
+
 st.markdown("### ⭐️ Most Starred Repositories")
-st.dataframe(df_repos, use_container_width=True, hide_index=True)
+st.dataframe(df_repos, use_container_width=True, hide_index=False)
 
 st.divider()
 
-df_contributors = pd.DataFrame(
-    np.random.randn(50, 3), columns=["Username", "Commits", "Projects"]
-)
+df_contributors = utils.fetch_most_active_contributors()
 
 st.markdown("### 🤖 Most Active Contributors")
 st.dataframe(df_contributors, use_container_width=True, hide_index=True)
 
 
-df = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4], columns=["lat", "lon"]
-)
+df = utils.fetch_contributors_locations()
 
-st.map(df)
+st.map(df, size=30, zoom=1, use_container_width=True)
 
 st.divider()
 
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+chart_data = utils.fetch_most_used_programming_languages()
 
-st.markdown("### 🤖 Most Used Programming Languages")
-st.bar_chart(chart_data)
+st.markdown("### 🦀 Most Used Programming Languages")
+chart = st.bar_chart(
+    chart_data.set_index("Programming Language"), use_container_width=True
+)
+st.pyplot(chart.figure)
 
 st.markdown(
     """

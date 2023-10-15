@@ -13,6 +13,8 @@ class GithubUser(models.Model):
     bio = models.TextField(null=True, blank=True)
     twitter_username = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
 
 class Repository(models.Model):
@@ -25,7 +27,7 @@ class Repository(models.Model):
     license = models.CharField(max_length=100)
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     topics = models.TextField()
 
 

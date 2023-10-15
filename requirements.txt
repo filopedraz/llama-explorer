@@ -12,3 +12,5 @@ flower==2.0.1
 redis==5.0.1
 django-celery-beat==2.5.0
 sentry-sdk[django]
+geopy==2.4.0
+matplotlib==3.8.0

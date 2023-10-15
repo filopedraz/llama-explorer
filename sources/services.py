@@ -1,11 +1,17 @@
 import logging
 
 from django.utils.dateparse import parse_datetime
+from geopy.geocoders import Nominatim
 
 from sources import models
 from sources.clients import github
 
 logger = logging.getLogger(__name__)
+
+
+def get_geolocator():
+    geolocator = Nominatim(user_agent="Llama Explorer")
+    return geolocator
 
 
 def load_repositories(filename="./repositories.txt"):
@@ -95,3 +101,19 @@ def fetch_and_save_contributor(username):
         logger.info(f"User {username} updated/created successfully")
     else:
         logger.error(f"User {username} failed to process.")
+
+
+def fetch_and_save_developer_coordinates(username):
+    geolocator = get_geolocator()
+    developer = models.GithubUser.objects.get(login=username)
+    if developer.latitude is None:
+        location = geolocator.geocode(developer.location)
+        if location is not None:
+            developer.latitude = location.latitude
+            developer.longitude = location.longitude
+            developer.save()
+            logger.info(f"Coordinates for {username} updated/created successfully")
+        else:
+            logger.error(f"Coordinates for {username} failed to process.")
+    else:
+        logger.info(f"Coordinates for {username} already exist")

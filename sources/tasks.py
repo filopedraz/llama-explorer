@@ -34,3 +34,14 @@ def fetch_and_save_contributor_task(self, username):
 def fetch_and_save_all_contributors_task(self):
     for developer in models.GithubUser.objects.all():
         fetch_and_save_contributor_task.delay(developer.login)
+
+
+@shared_task(bind=True, name="fetch_and_save_developer_coordinates_task")
+def fetch_and_save_developer_coordinates_task(self, username):
+    services.fetch_and_save_developer_coordinates(username)
+
+
+@shared_task(bind=True, name="fetch_and_save_all_developers_coordinates_task")
+def fetch_and_save_all_developers_coordinates_task(self):
+    for developer in models.GithubUser.objects.all():
+        fetch_and_save_developer_coordinates_task.delay(developer.login)
