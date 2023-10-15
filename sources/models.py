@@ -30,10 +30,12 @@ class Repository(models.Model):
 
 
 class Commit(models.Model):
-    hash = models.CharField(max_length=100, primary_key=True)
+    sha = models.CharField(max_length=100, primary_key=True)
+    message = models.TextField()
     developer = models.ForeignKey(
-        GithubUser, on_delete=models.CASCADE, related_name="commits"
+        GithubUser, on_delete=models.CASCADE, related_name="commits", null=True
     )
     repository = models.ForeignKey(
         Repository, on_delete=models.CASCADE, related_name="commits"
     )
+    created_at = models.DateTimeField()

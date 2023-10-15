@@ -11,3 +11,4 @@ celery==5.3.4
 flower==2.0.1
 redis==5.0.1
 django-celery-beat==2.5.0
+sentry-sdk[django]

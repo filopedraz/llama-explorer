@@ -12,7 +12,7 @@ class RepositoryAdmin(admin.ModelAdmin):
 
 
 class CommitAdmin(admin.ModelAdmin):
-    list_display = ("hash", "developer", "repository")
+    list_display = ("sha", "developer", "repository")
 
 
 admin.site.register(GithubUser, GithubUserAdmin)

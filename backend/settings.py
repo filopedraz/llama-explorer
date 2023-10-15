@@ -2,7 +2,12 @@ import logging
 import os
 from pathlib import Path
 
+import sentry_sdk
 from dotenv import load_dotenv
+from sentry_sdk.integrations.celery import CeleryIntegration
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
 
 load_dotenv()
 
@@ -148,3 +153,25 @@ REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
 # -----------------------------------------------
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
+# Sentry
+# -----------------------------------------------
+sentry_logging = LoggingIntegration(
+    level=logging.INFO,
+    event_level=logging.ERROR,
+)
+integrations = [
+    sentry_logging,
+    DjangoIntegration(),
+    CeleryIntegration(),
+    RedisIntegration(),
+]
+sentry_sdk.init(
+    dsn=os.getenv("SENTRY_DSN"),
+    integrations=integrations,
+    environment="production",
+    traces_sample_rate=0.05,
+    _experiments={
+        "profiles_sample_rate": 1.0,
+    },
+)

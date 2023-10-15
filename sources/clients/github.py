@@ -1,7 +1,6 @@
 import logging
 
 import requests
-from tenacity import retry, stop_after_attempt, wait_fixed
 
 from backend import settings
 
@@ -25,14 +24,12 @@ def handle_response(response):
         raise ValueError("Rate limit exceeded")
 
 
-@retry(stop=stop_after_attempt(3), wait=wait_fixed(60 * 30))
 def fetch_user_info(username):
     url = f"{GH_BASE_URL}/users/{username}"
     response = requests.get(url, headers=get_headers())
     return handle_response(response)
 
 
-@retry(stop=stop_after_attempt(3), wait=wait_fixed(60 * 30))
 def fetch_stars_page(repository, page):
     url = f"{GH_BASE_URL}/repos/{repository}/stargazers"
     response = requests.get(
@@ -57,7 +54,30 @@ def fetch_repository_contributors(repository):
     raise NotImplementedError
 
 
-def fetch_repository_info(repository):
+def fetch_repository(repository):
     url = f"{GH_BASE_URL}/repos/{repository}"
-    response = requests.get(url, headers=get_headers())
-    return handle_response(response)
+    try:
+        response = requests.get(url, headers=get_headers())
+        return handle_response(response)
+    except Exception as error:
+        logger.error(error)
+        return None
+
+
+def fetch_commits_info(repository, since_date=None):
+    url = f"{GH_BASE_URL}/repos/{repository}/commits"
+    all_commits = []
+    page = 1
+
+    while True:
+        params = {"since": since_date, "per_page": 100, "page": page}
+        response = requests.get(url, headers=get_headers(), params=params)
+
+        commits = handle_response(response)
+        if not commits:
+            break
+
+        all_commits.extend(commits)
+        page += 1
+
+    return all_commits
