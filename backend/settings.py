@@ -33,7 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://api-llama-explorer.joandko.io"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
