@@ -42,7 +42,7 @@ services:
       - .env
     command: celery -A backend worker -l info
     deploy:
-      replicas: 2
+      replicas: 4
 
   celerybeat:
     build: .
