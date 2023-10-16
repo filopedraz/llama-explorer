@@ -16,6 +16,9 @@ class GithubUser(models.Model):
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
 
+    def __str__(self) -> str:
+        return self.login
+
 
 class Repository(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
@@ -29,6 +32,9 @@ class Repository(models.Model):
     updated_at = models.DateTimeField()
     description = models.TextField(null=True, blank=True)
     topics = models.TextField()
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class Commit(models.Model):
