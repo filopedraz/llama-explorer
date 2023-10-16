@@ -4,7 +4,7 @@
 
 Keep track of all the Open Source AI projects, repositories, and contributors in an intuitive UI.
 
-## 🖥️ Demo
+## 🖥️ First Glance
 
 IMAGE_WITH_THE_MAP
 
