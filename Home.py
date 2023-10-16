@@ -17,7 +17,12 @@ init_django()
 
 import utils  # noqa
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="Llama Explorer", page_icon="🦙")
+
+st.title("Llama Explorer")
+st.write(
+    "🚀 Get instant insights in the open-source AI landscape. Most starred repositories, top contirbutos, most used programming languages and contributors location. "  # noqa E501
+)
 
 st.markdown(
     """
