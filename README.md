@@ -41,4 +41,23 @@ pip install -r requirements.txt
 # configure pre-commit
 pip install pre-commit
 pre-commit install
+
+# configure env variables
+cp .env.example .env
+
+# run the peripherics with docker-compose
+docker-compose up -d postgres redis
+
+# run the django backend
+python manage.py migrate
+python manage.py runserver
+
+# run the tasks to fetch data
+python manage.py repositories
+python manage.py commits
+python manage.py contributors
+python manage.py locations
+
+# run the streamlit app
+streamlit run Home.py
 ```

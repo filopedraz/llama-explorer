@@ -21,7 +21,7 @@ st.set_page_config(layout="wide", page_title="Llama Explorer", page_icon="🦙")
 
 st.markdown(
     """
-    <meta name="description" content="🚀 Get instant insights in the open-source AI landscape. Most starred repositories, top contirbutos, most used programming languages and contributors location.">
+    <meta name="description" content="🚀 Get instant insights in the open-source AI landscape. Most starred repositories, top contirbutors and most used programming languages in a single simple UI.">
     """,  # noqa E501
     unsafe_allow_html=True,
 )
