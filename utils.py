@@ -110,4 +110,4 @@ def fetch_most_used_programming_languages():
 
     df_languages = pd.DataFrame.from_records(languages_qs)
     df_languages.columns = ["Programming Language", "Count"]
-    return df_languages
+    return df_languages.sort_values('Count', ascending=False)

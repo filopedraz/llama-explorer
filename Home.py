@@ -42,15 +42,15 @@ st.divider()
 metric1, metric2, metric3 = utils.fetch_basic_metrics()
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Number of Repositories Tracked", metric1)
+col1.metric("Repositories Tracked", metric1)
 col2.metric("Most used Programming Language", metric2)
-col3.metric("Country with the Most contributors", metric3)
+col3.metric("Location with the most Contributors", metric3)
 
 st.divider()
 
 st.markdown(
     """
-### Best Contributor of the Day
+### Most active Contributor today
 """
 )
 
