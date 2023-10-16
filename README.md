@@ -6,7 +6,7 @@ Keep track of all the Open Source AI projects, repositories, and contributors in
 
 ## 🖥️ Demo
 
-<img width="925" alt="image" src="https://github.com/filopedraz/llama-explorer/assets/29598954/95dba8d5-ff19-4fb8-8459-8526b6de5d8e">
+<img width="1046" alt="image" src="https://github.com/filopedraz/llama-explorer/assets/29598954/921197c3-74cd-4603-b1ad-d3df80838984">
 
 Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 
