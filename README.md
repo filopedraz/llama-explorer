@@ -1,12 +1,12 @@
 # 🦙 Llama Explorer
 
-![cover](https://github.com/filopedraz/llama-explorer/assets/29598954/b979aef1-65bc-4019-8d09-bf4c236ce251)
+![cover](https://github.com/filopedraz/llama-explorer/assets/29598954/9cfc62de-c110-4c2b-aadf-77749ece1bd9)
 
 Keep track of all the Open Source AI projects, repositories, and contributors in an intuitive UI.
 
 ## 🖥️ First Glance
 
-<img width="1046" alt="image" src="https://github.com/filopedraz/llama-explorer/assets/29598954/921197c3-74cd-4603-b1ad-d3df80838984">
+<img width="1093" alt="image" src="https://github.com/filopedraz/llama-explorer/assets/29598954/c95215c9-001c-4d6a-986a-eb9142183beb">
 
 Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 
