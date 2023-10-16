@@ -6,7 +6,7 @@ Keep track of all the Open Source AI projects, repositories, and contributors in
 
 ## 🖥️ First Glance
 
-IMAGE_WITH_THE_MAP
+<img width="1046" alt="image" src="https://github.com/filopedraz/llama-explorer/assets/29598954/921197c3-74cd-4603-b1ad-d3df80838984">
 
 Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
 
