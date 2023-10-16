@@ -85,10 +85,9 @@ st.markdown("### 🦀 Most Used Programming Languages")
 chart = st.bar_chart(
     chart_data.set_index("Programming Language"), use_container_width=True
 )
-st.pyplot(chart.figure)
 
 st.markdown(
     """
-> Data is fetched everyday at 00:00 UTC. If you don't see a repository, you can create PR to add it to the list. Check how to do that in the settings page.
+> Data is fetched everyday at 00:00 UTC. If you don't see a repository, you can create a PR to add it to the list. Check how to do that in the settings page.
 """  # noqa E501
 )
