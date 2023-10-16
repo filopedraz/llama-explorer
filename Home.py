@@ -21,6 +21,7 @@ st.set_page_config(layout="wide", page_title="Llama Explorer", page_icon="🦙")
 
 st.markdown(
     """
+    <script defer data-domain="llama-explorer.joandko.io" src="https://analytics.prem.ninja/js/script.js"></script>
     <meta name="description" content="🚀 Get instant insights in the open-source AI landscape. Most starred repositories, top contirbutors and most used programming languages in a single simple UI.">
     """,  # noqa E501
     unsafe_allow_html=True,
