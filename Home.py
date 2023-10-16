@@ -17,9 +17,7 @@ init_django()
 
 import utils  # noqa
 
-st.set_page_config(layout="wide", page_title="Llama Explorer", page_icon="🦙")
-
-st.title("Llama Explorer")
+st.set_page_config(layout="wide", page_title="🦙 Llama Explorer", page_icon="🦙")
 
 st.markdown(
     """
