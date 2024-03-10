@@ -8,8 +8,6 @@ Keep track of all the Open Source AI projects, repositories, and contributors in
 
 <img width="1093" alt="image" src="https://github.com/filopedraz/llama-explorer/assets/29598954/c95215c9-001c-4d6a-986a-eb9142183beb">
 
-Check out the [Llama Explorer](https://llama-explorer.joandko.io/) website.
-
 ## 🚀 Roadmap
 
 - [ ] One Leaderboard to rule them all. No more 10 different tabs to check OpenLLM Leaderboard, CodeGen Leaderboards etc etc.
